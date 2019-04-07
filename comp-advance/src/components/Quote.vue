@@ -1,0 +1,56 @@
+<template>
+    <div>
+        <!-- <p>{{ quote }}</p> -->
+
+        <!-- <div class="title">
+             <slot></slot>
+        </div>
+        <hr>
+        <div>
+            <slot></slot>
+        </div> -->
+
+        <!-- <div class="title">
+             <slot name="title"></slot>
+        </div>
+        <hr>
+        <div>
+            <slot name="content"></slot>
+        </div> -->
+
+        <div class="title">
+             <slot name="title"></slot>
+             <span style="color: #ccc"><slot name="subtitle">The Subtitle</slot></span>
+        </div>
+        <hr>
+        <div>
+            <slot></slot>
+        </div>
+       
+    </div>
+</template>
+
+<script>
+    export default {
+        // props: ['quote']
+    }
+</script>
+
+<style scoped>
+    div {
+        border: 1px solid #ccc;
+        padding: 30px;
+        margin: 30px auto;
+        box-shadow: 1px 1px 2px black;
+        text-align: center;
+    }
+
+    h1 {
+        color: red;
+    }
+
+    .title {
+        font-style: italic;
+    }
+</style>
+

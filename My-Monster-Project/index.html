@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monster Slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">YOU</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="showPoints == false ? initialPercentage:playerHealthBar">
+                    {{ healthPercent2 }} 
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">MONSTER</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;" :style="showPoints == false ? initialPercentage:monsterHealthBar">
+                    {{ healthPercent1 }} 
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="row controls" v-show="!startGame">
+        <div class="small-12 columns">
+            <button id="start-game" @click="newGame">START NEW GAME</button>
+        </div>
+    </section>
+        <section class="row controls"  v-show="startGame">
+            <div class="small-12 columns">
+                <button id="attack" @click="attackResult">ATTACK</button>
+                <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+                <button id="heal" @click="healthResult">HEAL</button>
+                <button id="give-up" @click="giveUp">GIVE UP</button>
+            </div>
+        </section>
+    <section class="row log" v-show="showPoints">
+        <div class="small-12 columns">
+            <ul>
+                <div v-for="item in items">
+                    <li v-for="(value,key) in item" v-bind:class="key == 'PLAYER HITS MONSTER FOR' ? 'player-turn':'monster-turn'">{{ key }} : {{ value }}</li>
+                </div>
+            </ul>
+        </div>
+    </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
+
+<!-- 
+[showPoints != true ? {width: healthPercent + '%'}:{width: (healthPercent - playerPoints) + '%'}]
+[showPoints != true ? {width: healthPercent + '%'}:{width: (healthPercent - monsterPoints) + '%'}] 
+-->
+
+<!--
+<section class="row log">
+    <ul>
+        <li v-for="testPoint in testPoints">
+            <div v-for="(value,key) in testPoint">{{ key }}: {{ value }}</div>
+            <span v-for="(value,key) in testPoint">{{ key }}: {{ value }}</span>
+        </li>
+    </ul>
+</section>
+-->
+
+<!-- 
+<li class="player-turn" v-for="playerPoint in playerPoints">PLAYER HITS MONSTER FOR {{ playerPoint }}</li>
+<li class="monster-turn" v-for="monsterPoint in monsterPoints">MONSTER HITS PLAYER FOR {{ monsterPoint }}</li> 
+-->
