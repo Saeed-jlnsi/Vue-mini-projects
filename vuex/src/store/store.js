@@ -16,11 +16,11 @@ export const store = new Vuex.Store({
         }
     },
     mutations: {
-        increment: state => {
-            return state.counter++;
+        increment: (state, payload) => {
+            return state.counter += payload;
         },
-        decrement: state => {
-            return state.counter--;
+        decrement: (state, payload) => {
+            return state.counter -= payload;
         }
     },
     // actions: {
@@ -31,21 +31,22 @@ export const store = new Vuex.Store({
 
     // WE USE DESTRUCTION TO USE ONLY THE COMMIT METHOD OF THE CONTEXT OBJECT: '{commit}'
     actions: {
-        increment: ({commit}) => {
-            commit('increment');
+        increment: ({commit}, payload) => {
+            commit('increment', payload);
         },
-        decrement: ({commit}) => {
-            commit('decrement');
+        decrement: ({commit}, payload) => {
+            commit('decrement', payload);
         },
-        asyncIncrement: ({commit}) => {
+        // HERE THE PAYLOAD PARAMETER IS AN OBJECT, AND WE USED IT AS AN OBJECT('payload.by' and 'payload.duration')
+        asyncIncrement: ({commit}, payload) => {
             setTimeout(() => {
-                commit('increment');
-            },1000);
+                commit('increment', payload.by);
+            }, payload.duration);
         },
-        asyncDecrement: ({commit}) => {
+        asyncDecrement: ({commit}, payload) => {
             setTimeout(() => {
-                commit('decrement');
-            }, 1000);
+                commit('decrement', payload.by);
+            },  payload.duration);
         }
     }
 });
