@@ -22,5 +22,30 @@ export const store = new Vuex.Store({
         decrement: state => {
             return state.counter--;
         }
+    },
+    // actions: {
+    //     increment: context => {
+    //         context.commit('increment');
+    //     }
+    // },
+
+    // WE USE DESTRUCTION TO USE ONLY THE COMMIT METHOD OF THE CONTEXT OBJECT: '{commit}'
+    actions: {
+        increment: ({commit}) => {
+            commit('increment');
+        },
+        decrement: ({commit}) => {
+            commit('decrement');
+        },
+        asyncIncrement: ({commit}) => {
+            setTimeout(() => {
+                commit('increment');
+            },1000);
+        },
+        asyncDecrement: ({commit}) => {
+            setTimeout(() => {
+                commit('decrement');
+            }, 1000);
+        }
     }
 });

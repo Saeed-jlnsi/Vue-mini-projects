@@ -7,6 +7,7 @@
 
 <script>
     import {mapMutations} from 'vuex';
+    import {mapActions} from 'vuex';
     export default {
         // methods: {
         //     increment() {
@@ -26,8 +27,15 @@
         //     }
         // }
         
+        // methods: {
+        //     ...mapMutations([
+        //         'increment',
+        //         'decrement'
+        //     ])
+        // }
+
         methods: {
-            ...mapMutations([
+            ...mapActions([
                 'increment',
                 'decrement'
             ])
