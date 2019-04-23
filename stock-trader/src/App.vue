@@ -17,15 +17,21 @@
             </div>
         </header>
         <div class="content">
-
+            <!-- <app-home></app-home> -->
         </div>
     </div>
 </template>
 
 <script>
-
+    // import Home from './view/Home';
+    // import Portfolio from './components/Portfolio/Portfolio';
+    // import Stocks from './components/Stocks/Stocks';
     export default {
-
+        // components: {
+        //     appHome : Home,
+        //     appStocks: Stocks,
+        //     appPortfolio: Portfolio
+        // }
     }
 </script>
 
